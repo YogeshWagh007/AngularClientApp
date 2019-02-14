@@ -1,0 +1,99 @@
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" style="color:white" >Welcome {{user}}</a>
+      </div>
+      <ul class="nav navbar-nav text-right">
+        <li class="active"><a (click)="addComplaint()">Add Complaint</a></li>
+        <li class="active"><a (click)="logout()">logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    
+      <h2 class="text-center">Complaint Table</h2>
+      <div class="table-responsive" style="color:white">          
+        <table class="table">
+        <thead>
+          <tr>
+              <th>EMAIL ID</th>
+              <th>TITLE</th>
+              <th>STATUS</th>
+              <th>CREATED AT</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of complaints; let i = index">
+              <td>{{item.email}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.status}}</td>
+              <td>{{item.createdAt}}</td>
+              <td><button data-toggle="modal" data-target="#myModal" (click)="editComplaint(item)" class="btn-default">Edit</button></td>
+              <td><button (click)="deleteComplaint(item)" class="btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" *ngIf="isEdit">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Complaint</h4>
+          </div>
+          <div class="modal-body">
+              <form style="width:100%">
+                  
+                  
+                        <div class="form-group">
+                          <label for="title">Title </label>
+                          <input type="text" class="form-control" placeholder={{selectedItem.title}} [(ngModel)]="selectedItem.title"
+                            name="title" required />
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="description">Description </label>
+                          <input type="text" class="form-control" placeholder={{selectedItem.description}} [(ngModel)]="selectedItem.description"
+                            name="description" required />
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Created At </label>
+                          {{selectedItem.createdAt}}
+                        </div>
+                        <div class="form-group">
+                          <label for="status">Status </label>
+                          <select value="{{selectedItem.status}}" [(ngModel)]="selectedItem.status" name="status" class="form-control">
+                            <option>registered</option>
+                            <option>pending</option>
+                            <option>resolved</option>
+                          </select>
+                        </div>
+                  
+                  
+                  
+                  
+                        <h6>Log:</h6>
+                        <div style="max-height: 100px; overflow-y: scroll">
+                          <table class="table table-borderless table-dark table-hover">
+                            <tbody>
+                              <tr *ngFor="let item of selectedItem.actionLog[0].split(',')  ; let i = index">
+                  
+                                <td >{{item}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                  
+                      </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+            <button type="button" (click)="updateComplaint(selectedItem)" class="btn btn-default" >Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

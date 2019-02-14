@@ -1,0 +1,53 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" style="color:white" >Welcome {{user}}</a>
+      </div>
+      <ul class="nav navbar-nav text-right">
+        <li class="active"><a (click)="logout()">logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="jumbotron" style="margin:10px;">
+          <h2 class="text-center">Register Complaint</h2>
+          <form name="form" (ngSubmit)="f.form.valid && addComplaint(model)" #f="ngForm" novalidate>         
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" [(ngModel)]="model.title" #title="ngModel" [ngClass]="{'is-invalid':f.submitted && title.invalid}" name="title" required  />
+              <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+                <div *ngIf="title.errors.required" class="alert-danger">Title Name is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Description</label>
+              <input type="text" class="form-control" [(ngModel)]="model.description" #description="ngModel" [ngClass]="{'is-invalid':f.submitted && description.invalid}" name="description" required  />
+              <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+                <div *ngIf="description.errors.required" class="alert-danger">Description  is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Status</label>
+                <select class="form-control"  [(ngModel)]="model.status" name="status" >
+                    <option>registered</option>
+                    <option>pending</option>
+                    <option>resolved</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <div class="">
+                    <div class="col-6">
+                        <button class="btn btn-primary btn-block">Add Complaint</button>
+                    </div>
+                </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
