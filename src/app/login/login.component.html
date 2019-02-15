@@ -1,19 +1,18 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid ">
-    <div class="navbar-header ">
-      <h1 class="navbar-brand " style="color:white">Complaint Application</h1>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="color:rgb(29, 172, 228)">Complaint Application</a>
+      <a class="navbar-brand" (click)="signup()" style="color:rgb(228, 29, 29)">Signup</a>
     </div>
   </div>
 </nav>
 <div class="container">
-    <div class="row">
-      <div class="col-6">
         <div class="jumbotron" style="margin:10px;">
-          <h2 class="text-center">Login</h2>
+          <h2 class="text-center">LOGIN</h2>
           <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>         
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}" name="email" required email />
+              <input type="text" class="form-control input-lg" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}" name="email" required email />
               <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                 <div *ngIf="email.errors.required" class="alert-danger">Email Name is required</div>
                 <div *ngIf="email.errors.email" class="alert-danger">Email must be a valid email Address</div>
@@ -21,7 +20,7 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}" name="password" required  />
+              <input type="password" class="form-control input-lg" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}" name="password" required  />
               <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
                 <div *ngIf="password.errors.required" class="alert-danger">Password Name is required</div> 
               </div>
@@ -29,17 +28,11 @@
             <div class="form-group">
                 <div class="">
                     <div class="col-6">
-                        <button class="btn btn-primary btn-block">Login</button>
-                    </div>
-                    <br/>
-                    <div class="col-6">
-                        <button (click)="signup()" class="btn btn-primary btn-block">Singup</button>
+                        <button class="btn btn-info btn-lg">LOGIN</button>
                     </div>
                 </div>
             </div>
             
           </form>
         </div>
-      </div>
-    </div>
   </div>

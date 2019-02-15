@@ -1,18 +1,20 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid ">
+<nav class="navbar navbar-default">
+  <div class="container ">
     <div class="navbar-header ">
-      <h1 class="navbar-brand " style="color:white">Complaint Application</h1>
+      <a class="navbar-brand "  style="color:rgb(29, 172, 228)">Complaint Application</a>
+      <a class="navbar-brand " (click)="gotoLogin()" style="color:rgb(228, 29, 29)"><span class="glyphicon glyphicon-log-in"></span>  Login</a>
     </div>
   </div>
-</nav><div class="container">
+</nav>
+<div class="container">
   <div class="row">
     <div class="col-6">
       <div class="jumbotron" style="margin:10px;">
-        <h2 class="text-center">Signup</h2>
+        <h2 class="text-center">Sign up</h2>
         <form name="form" (ngSubmit)="f.form.valid && signup()" #f="ngForm" novalidate>         
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}" name="email" required email />
+            <input type="text" class="form-control input-lg" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}" name="email" required email />
             <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
               <div *ngIf="email.errors.required" class="alert-danger">Email Name is required</div>
               <div *ngIf="email.errors.email" class="alert-danger">Email must be a valid email Address</div>
@@ -20,7 +22,7 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}" name="password" required minlength="6" />
+            <input type="password" class="form-control input-lg" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}" name="password" required minlength="6" />
             <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
               <div *ngIf="password.errors.required" class="alert-danger">Password Name is required</div>
               <div *ngIf="password.errors.minlength" class="alert-danger">Password must be at least 6 characters</div>
@@ -28,16 +30,12 @@
           </div>
           <div class="form-group">
               <label for="password">Confirm Password</label>
-              <input type="password" class="form-control" [(ngModel)]="confirmPassword"  [ngClass]="{'is-invalid':f.submitted && confirmPassword.invalid}" name="confirmPassword" required  />
+              <input type="password" class="form-control input-lg" [(ngModel)]="confirmPassword"  [ngClass]="{'is-invalid':f.submitted && confirmPassword.invalid}" name="confirmPassword" required  />
             </div>
           <div class="form-group">
               <div class="">
                   <div class="col-6">
-                      <button class="btn btn-primary btn-block">Register</button>
-                  </div>
-                  <br/>
-                  <div class="col-6">
-                      <button (click)="gotoLogin()" class="btn btn-primary btn-block">Login</button>
+                      <button class="btn btn-info btn-lg">Register</button>
                   </div>
               </div>
           </div>
